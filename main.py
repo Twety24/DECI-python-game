@@ -1,17 +1,20 @@
 import random
 
+# Function to display the introduction and initial choices
 def intro():
     print("\nYou awaken in a mystical forest with towering trees and a faint mist swirling around your feet.")
     print("You have no memory of how you got here, but you feel an urge to explore.")
     print("Paths lead to the north, east, south, and west.")
     print("Choose a direction to begin your adventure.")
 
+# Function to prompt the player to choose a direction
 def choose_path():
     path = ''
     while path not in ['north', 'east', 'south', 'west']:
         path = input("Which direction do you choose? (north/east/south/west): ").lower()
     return path
 
+# Function to handle the north path scenario
 def north_path():
     print("\nYou head north and encounter a wise old wizard who offers you a challenge.")
     if random.choice([True, False]):
@@ -21,11 +24,13 @@ def north_path():
         print("You fail the wizard's riddle and he teleports you back to the forest entrance. You lose 20 points.")
         return -20
 
+# Function to handle the east path scenario
 def east_path():
     print("\nYou head east and find a peaceful village. The villagers welcome you and offer you food and shelter.")
     print("You gain 30 points for your kindness and hospitality.")
     return 30
 
+# Function to handle the south path scenario
 def south_path():
     print("\nYou head south and stumble upon a dark cave.")
     if random.choice([True, False]):
@@ -35,6 +40,7 @@ def south_path():
         print("Inside, you are ambushed by goblins and lose some of your belongings. You lose 50 points.")
         return -50
 
+# Function to handle the west path scenario
 def west_path():
     print("\nYou head west and discover an ancient ruin.")
     if random.choice([True, False]):
@@ -44,6 +50,7 @@ def west_path():
         print("Exploring the ruins, you trigger a trap and barely escape with your life. You lose 40 points.")
         return -40
 
+# Function to display the game over message and prompt the player to play again
 def game_over(score):
     print(f"\nYour adventure has come to an end. Your final score is {score} points.")
     choice = ''
@@ -51,10 +58,13 @@ def game_over(score):
         choice = input("Do you want to play again? (yes/no): ").lower()
     return choice == 'yes'
 
+# Main function to start and manage the game
 def main():
     playing = True
     while playing:
         score = 0
+        turns = 0
+        max_turns = 5  # Condition to end the game after a certain number of turns
         intro()
         while True:
             path = choose_path()
@@ -69,7 +79,12 @@ def main():
                 score += west_path()
             
             print(f"\nYour current score is: {score} points.")
+            turns += 1
             
+            if turns >= max_turns:
+                print("\nYou have reached the maximum number of turns for this adventure.")
+                break
+
             continue_adventure = input("Do you want to continue exploring? (yes/no): ").lower()
             if continue_adventure != 'yes':
                 break
