@@ -1,10 +1,14 @@
 import random
+import time
 
 # Function to display the introduction and initial choices
 def intro():
     print("\nYou awaken in a mystical forest with towering trees and a faint mist swirling around your feet.")
+    time.sleep(2)
     print("You have no memory of how you got here, but you feel an urge to explore.")
+    time.sleep(2)
     print("Paths lead to the north, east, south, and west.")
+    time.sleep(2)
     print("Choose a direction to begin your adventure.")
 
 # Function to prompt the player to choose a direction
@@ -17,6 +21,7 @@ def choose_path():
 # Function to handle the north path scenario
 def north_path():
     print("\nYou head north and encounter a wise old wizard who offers you a challenge.")
+    time.sleep(2)
     if random.choice([True, False]):
         print("You solve the wizard's riddle and he rewards you with a magical amulet. You gain 50 points!")
         return 50
@@ -27,12 +32,14 @@ def north_path():
 # Function to handle the east path scenario
 def east_path():
     print("\nYou head east and find a peaceful village. The villagers welcome you and offer you food and shelter.")
+    time.sleep(2)
     print("You gain 30 points for your kindness and hospitality.")
     return 30
 
 # Function to handle the south path scenario
 def south_path():
     print("\nYou head south and stumble upon a dark cave.")
+    time.sleep(2)
     if random.choice([True, False]):
         print("Inside, you find a hidden treasure chest filled with gold. You gain 100 points!")
         return 100
@@ -43,6 +50,7 @@ def south_path():
 # Function to handle the west path scenario
 def west_path():
     print("\nYou head west and discover an ancient ruin.")
+    time.sleep(2)
     if random.choice([True, False]):
         print("Exploring the ruins, you find a powerful artifact that grants you wisdom. You gain 70 points!")
         return 70
